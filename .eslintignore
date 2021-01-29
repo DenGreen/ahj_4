@@ -1,0 +1,5 @@
+dist
+coverage
+docs
+src/js/validation.js
+src/js/checkingNumber.js
