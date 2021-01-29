@@ -16,4 +16,4 @@ deploy_script: # скрипт развёртывания
 - git config --global user.name DanGreen
 - git config --global user.email drevnii94@mail.ru
 - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
-- yarn push-dir --dir=dist --branch=gh-pages --force --verbose
+- npx push-dir --dir=dist --branch=gh-pages --force --verbose
