@@ -13,8 +13,7 @@ export default class interaction {
 
   eventAddInput() {
     this.formControl.addEventListener('input', () => {
-      if (this.formControl.value === '') this.deletingMapClasses();
-      this.mapSearch(this.checkingNumber.checking(Number(this.formControl.value)));
+      this.mapSearch(this.checkingNumber.checking(this.formControl.value));
     });
   }
 
@@ -22,15 +21,20 @@ export default class interaction {
     this.btn.addEventListener('click', (event) => {
       event.preventDefault();
       const valid = this.validation.luhnAlgorithm(this.formControl.value);
-      if (!valid) alert('Номер карты не верен');
+      if (!valid) {
+        alert('Номер карты не верен');
+      } else {
+        alert('Номер действительный!');
+      }
+
     });
   }
 
   mapSearch(cardIndex) {
     const card = Array.from(this.cardList);
     card.splice(cardIndex, 1);
-
-    if (cardIndex) {
+    this.deletingMapClasses();
+    if (cardIndex || cardIndex === 0) {
       card.forEach((value) => {
         value.classList.add('mask');
       });
